@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer    , MDBCol, MDBBtnGroup, MDBIcon } from 'mdbreact';
 import ('./Session.scss');
 
-const playlistUrl = 'http://spartyfy.com:5000/playlists';
+const playlistUrl = 'http://www.spartyfy.com:5000/playlists';
 
 class Session  extends Component {
     constructor() {
