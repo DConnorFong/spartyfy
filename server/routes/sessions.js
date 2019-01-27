@@ -10,8 +10,7 @@ const stateKey = 'spotify_auth_state';
 const redirectUri = 'http://localhost:3000/sessions/token';
 
 router.get('/login', function(req, res) {
-
-  var state = generateRandomString(16);
+  let state = generateRandomString(16);
   res.cookie(stateKey, state);
 
   // your application requests authorization
@@ -40,7 +39,7 @@ router.get('/token', async function(req, res, next) {
       uri: 'https://accounts.spotify.com/api/token',
       form: {
         grant_type: 'authorization_code',
-        code: req.query.code,
+        code: code,
         redirect_uri: redirectUri,
         client_id: clientId,
         client_secret: clientSecret
@@ -49,9 +48,10 @@ router.get('/token', async function(req, res, next) {
 
     try {
       let tokenResponse = await request(options);
+      let tokenInfo = JSON.parse(tokenResponse);
+      req.session.tokenInfo = tokenInfo;
 
-
-      res.send(tokenResponse);
+      res.send("This should be a redirect back to the front end.");
     } catch (err) {
       let message = `Failed to request token from Spotify\nError: ${err}`;
       console.log(message);
