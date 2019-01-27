@@ -49,6 +49,10 @@ router.post('/song', async function(req, res) {
 
 router.get('/', async function(req, res) {
   let playlist = await store.get('playlist');
+  if (!playlist) {
+    playlist = [];
+  }
+
   res.status(200).send(JSON.stringify(playlist));
 });
 
