@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NowPlaying from './components/NowPlaying';
+import Session from './components/Session';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
+
+  state = {
+    NowPlaying: {
+      songTitle : 'YAHHH',
+      songInfo  : 'yeeeet',
+    }
+  }
+
+  
+
+
+
   render() {
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="App"> 
+        <Session/>
+        <NowPlaying/>
+        
       </div>
     );
   }
