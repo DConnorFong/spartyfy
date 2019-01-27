@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import SearchSong from './SearchSong.jsx';
+import Header from '../../components/Header';
 import { MDBCol } from "mdbreact";
 import './Search.scss';
-import { SearchInput, Page, List, ListHeader, ListItem, Button } from 'react-onsenui';
+import { Page, SearchInput, Toolbar, List, Button} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import queryString from 'query-string';
 
 const searchUrl = 'http://localhost:5000/search/song';
 
-class Search extends Component {
+class SearchComponent extends Component {
     constructor() {
         super();
         this.state = { 
@@ -18,6 +19,10 @@ class Search extends Component {
         };
 
         this.searchSong = this.searchSong.bind(this);
+    }
+
+    gotoComponent(component, key) {
+        this.props.navigator.pushPage({comp: component, props: { key }});
     }
     render() { 
         return (
@@ -89,5 +94,23 @@ class Search extends Component {
     }
 }
 
+class Search extends Component {
+    renderToolbar() {
+        return (
+          <Toolbar visible={false}>
+            <div className='left'>
+            </div>
+          </Toolbar>
+        );
+      }
+    render() {
+        return(
+            <Page renderToolbar={this.renderToolbar}>
+                <Header/>
+                <SearchComponent/>
+            </Page>
+        );
+    }
+}
  
 export default Search;

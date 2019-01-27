@@ -1,5 +1,36 @@
 #album{
     width: 150px;
     height: 150px;
-    object-fit: cover
+    background-size: cover;
 }
+#albumbig{
+    object-fit: cover;
+}
+
+#player{
+    background:  #191414;
+  }
+
+h2{
+    color: #f2f25c;
+    font-family: 'Permanent Marker', cursive;
+    padding: 10px;
+}
+p{
+    color: white;
+    padding: 0px;
+}
+
+#songplaying{
+    font-size: 1.5rem;
+    padding: 0px;
+}
+
+.img-thumbnail{
+    background-color: #f2f25c; 
+}
+
+hr{
+    border-color: 1db954;
+}
+

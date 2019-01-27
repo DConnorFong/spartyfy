@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { Page, Toolbar } from 'react-onsenui';
+import Header from '../components/Header';
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
 import ('./Leaderboard.scss');
 
-class Leaderboard extends Component {
+class LeaderboardComponent extends Component {
     state = { 
         guests: [
             'DJ Jazzy Jeff',
@@ -21,6 +25,7 @@ class Leaderboard extends Component {
                     <div className="row justify-content-center">
                         <h3>Who's Hot Tonight?</h3>
                     </div>
+                    <hr />
                     <div className="row justify-content-center">
                         {this.renderGuests()}
                     </div>
@@ -35,7 +40,39 @@ class Leaderboard extends Component {
                 <p>No guests yet...</p>
             );
             else
-                return <ol>{this.state.guests.map(guest => <li>{guest}</li>)}</ol>;
+                return <ol>{this.state.guests.map((guest, index) => <li className={this.styleRanking(index)}>{guest}</li>)}</ol>;
+    }
+
+    styleRanking(index) {
+        if (index === 0) 
+            return 'gold';
+        else if (index === 1)
+            return 'silver';
+        else if (index === 2)
+            return 'bronze';
+        else
+            return '';
+    }
+}
+class Leaderboard extends Component {
+    constructor() {
+        super();
+    }
+    renderToolbar() {
+        return (
+          <Toolbar visible={false}>
+            <div className='right'>
+            </div>
+          </Toolbar>
+        );
+      }
+    render() {
+        return(
+            <Page renderToolbar={this.renderToolbar}>
+                <Header />
+                <LeaderboardComponent/>
+            </Page>
+        );
     }
 }
  
