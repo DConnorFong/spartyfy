@@ -46,7 +46,7 @@ class NowPlayingGuest extends Component {
         return ( 
             <div id="player-guest" className="container">
                 <div className="row">
-                    <div className="col-3 col-sm-2">
+                    <div className="col-3 col-sm-2 menu-item">
                         <img src={this.state.albumArt} id="album-small" className="img-fluid img-thumbnail"/>
                     </div>
                     <div className="col-7">
@@ -54,7 +54,7 @@ class NowPlayingGuest extends Component {
                         <p className="player-guest-song">{this.state.songTitle}</p>
                         <p>{this.state.songArtist}</p>
                     </div>
-                    <div className="col-2 col-sm-3">
+                    <div className="col-2 col-sm-3 menu-item">
                         <button type="button" class="btn btn-block btn btn-primary center-block">
                             <i className="fas fa-thumbs-up"></i>
                         </button> 
