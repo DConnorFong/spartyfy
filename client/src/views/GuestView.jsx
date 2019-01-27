@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from '../components/search/Search';
+import NowPlayingGuest from '../components/NowPlayingGuest';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import '../styles/Tabbar.scss'
@@ -21,7 +22,9 @@ class GuestView extends Component {
         return ( 
             <React.Fragment>
                 <Search navigator={this.props.navigator}/>
-                <div id="spartyfy-nowplaying-footer">This is a test</div>
+                <div id="spartyfy-nowplaying-footer">
+                    <NowPlayingGuest />
+                </div>
             </React.Fragment>
         );
     }

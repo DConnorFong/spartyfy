@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer, MDBRow, MDBCol, MDBBtnGroup, MDBIcon } from 'mdbreact';
 import ('./NowPlaying.scss');
 
-const playlistUrl = 'http://40.85.221.22:5000/playlists';
+const baseUrl = 'http://40.85.221.22:5000';
+const playlistUrl = baseUrl + '/playlists';
+const skipUrl = playlistUrl + '/skip';
 
 class NowPlaying  extends Component {
     constructor() {
@@ -10,7 +12,7 @@ class NowPlaying  extends Component {
         this.state = {
             songTitle: '',
             songArtist: '',
-            albumArt: 'https://static1.squarespace.com/static/59decda418b27ddf3baeb5ba/t/59df0df5197aeac813c065d6/1507790325363/Black.jpg?format=1500w',
+            albumArt: 'http://www.myseumoftoronto.com/wp-content/uploads/2018/05/plain-black-background.jpg',
         };
 
         this.pollPlaylist = this.pollPlaylist.bind(this);
@@ -43,37 +45,54 @@ class NowPlaying  extends Component {
           .then(() => setTimeout(this.pollPlaylist, 3000));
     }
 
+    skipSong() {
+        fetch(skipUrl, {
+            method: 'post'
+        }).then(res => {
+            if (res.status === 200) {
+                console.log('Skip succeeded');
+            } else {
+                console.log('Skip failed');
+            }
+        }).catch((err) => {
+            console.error('An error occured while skipping: ' + err);
+        });
+    }
+
     render() {
         return (
             <div className="row justify-content-center">
                 <div className="col d-none d-lg-block">
-                    <MDBCard id="player" style={{ width: "23" }}>
+                    <MDBCard id="player" style={{ width: "flex" }}>
                         <h2>Now Playing</h2>
                         <div className="row justify-content-center">
-                        <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">{this.state.songTitle} - {this.state.songTitle}</marquee>
+                        <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">{this.state.songTitle} - {this.state.songArtist}</marquee>
                         </div>
                         <div class="text-center">
-                            <img src={this.state.albumArt} id="albumbig" className="img-fluid img-thumbnail"/>
+                            <img src={this.state.albumArt} id="albumbig" className="img-fluid   "/>
                         </div>
                         <MDBCardBody>   
 
-                        <div className="row justify-content-center">
-                            <div className="col-3">
+                        <div className="row justify-content-between">
+                            <div className="col-4">
                                 <div className="text-center">
                                     <button type="button" class="btn btn-block btn-lg btn-danger center-block">
-                                        <i className="fas fa-thumbs-down"></i>
+                                        <i className="fas fa-thumbs-down"></i><span className="badge">3</span>
                                     </button>
 
                                 </div>       
                             </div>
-                            <div className ="col-6">
-                                <p id="songplaying" className="text-uppercase text-center">{this.state.songTitle}</p>
-                                <p className="text-center">{this.state.songArtist}</p>
+                            <div className="col-4">
+                                    <button type="button" class="btn btn-block btn-lg btn-dark center-block"
+                                        onClick={this.skipSong}>
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </button>
                             </div>
-                            <div className="col-3">
+  
+                            <div className="col-4">
                                   <div className="text-center">
                                     <button type="button" class="btn btn-block btn-lg btn-primary center-block">
-                                        <i className="fas fa-thumbs-up"></i>
+                                        <i className="fas fa-thumbs-up"></i><span className="badge">3</span>
                                     </button>                    
                                 </div>    
                             </div>
@@ -82,43 +101,9 @@ class NowPlaying  extends Component {
 
                         </MDBCard>
                        
-                    </div>
-
-                <MDBCol className="d-lg-none">
-                    <MDBCard id="player" style={{height: "20", width: ""}}>
-                    <div className="row justify-content-between align-items-center">
-                        <div className="col-4">                          
-                            <img className="img-thumbnail" id="album" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt=""/>
-                        </div>
-                        <div className="col-4">
-                            <MDBCardTitle className="text-uppercase text-center text-nowrap">Now Playing</MDBCardTitle>
-                            <MDBCardTitle className="text-uppercase text-center"><small>Song Title</small></MDBCardTitle>
-                            <MDBCardText>Song Data</MDBCardText>
-                        </div>                      
-                        <div className="col-4">
-                            <div className="row justify-content-center">
-                                <div className="col-6">
-                                <button type="button" class="btn btn-primary">
-                                <i className="fas fa-thumbs-down"></i>
-                                </button>                                   
-                            </div>
-                              
-                            <div className="col-6">
-                                <button type="button" class="btn btn-primary">
-                                    <i className="fas fa-thumbs-up"></i>
-                                </button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    </MDBCard>
-                </MDBCol>
-
-
-
+                </div>  
             </div>  
-            );
+        );
     }
 }
  
