@@ -124,11 +124,18 @@ async function playSong() {
       await playSong();
     }, song.duration + 1000);
 
+    await resetVotes();
     return response;
   } catch (err) {
     console.log(err);
     return null;
   }
+}
+
+async function resetVotes() {
+  await store.set('upVotes', 0);
+  await store.set('downVotes', 0);
+  await store.set('clientIps', []);
 }
 
 module.exports = router;

@@ -5,6 +5,9 @@ import ('./NowPlaying.scss');
 const baseUrl = 'http://www.spartyfy.com:5000';
 const playlistUrl = baseUrl + '/playlists';
 const skipUrl = playlistUrl + '/skip';
+const voteUrl = baseUrl + '/vote';
+const upVoteUrl = baseUrl + '/vote/up';
+const downVoteUrl = baseUrl + '/vote/down';
 
 class NowPlaying  extends Component {
     constructor() {
@@ -13,17 +16,22 @@ class NowPlaying  extends Component {
             songTitle: '',
             songArtist: '',
             albumArt: 'http://www.myseumoftoronto.com/wp-content/uploads/2018/05/plain-black-background.jpg',
+            upVotes: 0,
+            downVotes: 0
         };
 
         this.pollPlaylist = this.pollPlaylist.bind(this);
+        this.pollVotes = this.pollVotes.bind(this);
 
         this.pollPlaylist();
+        setInterval(this.pollVotes, 3000);
+
+
     }
 
     pollPlaylist() {
         fetch(playlistUrl)
           .then(res => {
-              console.log(res);
               return res.json();
           })
           .then(songs => songs[0])
@@ -45,6 +53,20 @@ class NowPlaying  extends Component {
           .then(() => setTimeout(this.pollPlaylist, 3000));
     }
 
+    pollVotes() {
+        fetch(voteUrl)
+          .then(res => {
+              console.log(res);
+              return res.json();
+          })
+          .then((votes) => {
+              console.log(votes);
+              this.setState({upVotes: votes.up, downVotes: votes.down});
+            }
+          )
+          .catch(() => console.error('Failed to retrieve votes'));
+    }
+
     skipSong() {
         fetch(skipUrl, {
             method: 'post'
@@ -59,7 +81,33 @@ class NowPlaying  extends Component {
         });
     }
 
-    render() {
+    upVote() {
+        fetch(upVoteUrl, {
+            method: 'put'
+        }).then(res => {
+            if (res.status !== 204) {
+                console.error('Up vote failed');
+            }
+        }).catch(err => {
+            console.error('An error occured while up voting: ' + err);
+        });
+    }
+
+    downVote() {
+        fetch(downVoteUrl, {
+            method: 'put'
+        }).then(res => {
+            if (res.status !== 204) {
+                console.error('Down vote failed');
+            }
+        }).catch(err => {
+            console.error('An error occured while down voting: ' + err);
+        });
+    }
+
+
+
+  render() {
         return (
             <div className="row justify-content-center">
                 <div className="col d-none d-lg-block">
@@ -76,8 +124,9 @@ class NowPlaying  extends Component {
                         <div className="row justify-content-between">
                             <div className="col-4">
                                 <div className="text-center">
-                                    <button type="button" class="btn btn-block btn-lg btn-danger center-block">
-                                        <i className="fas fa-thumbs-down"></i><span className="badge">3</span>
+                                    <button type="button" class="btn btn-block btn-lg btn-danger center-block"
+                                        onClick={this.downVote}>
+                                        <i className="fas fa-thumbs-down"></i><span className="badge">{this.state.downVotes}</span>
                                     </button>
 
                                 </div>       
@@ -91,8 +140,9 @@ class NowPlaying  extends Component {
   
                             <div className="col-4">
                                   <div className="text-center">
-                                    <button type="button" class="btn btn-block btn-lg btn-primary center-block">
-                                        <i className="fas fa-thumbs-up"></i><span className="badge">3</span>
+                                    <button type="button" class="btn btn-block btn-lg btn-primary center-block"
+                                        onClick={this.upVote}>
+                                        <i className="fas fa-thumbs-up"></i><span className="badge">{this.state.upVotes}</span>
                                     </button>                    
                                 </div>    
                             </div>
