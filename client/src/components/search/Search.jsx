@@ -111,7 +111,6 @@ class SearchComponent extends Component {
     addSong(idx) {
         let thiss = this;
         return async () => {
-            debugger;
             let rawSong = thiss.state.rawSongs.tracks.items[idx];
             let response = await fetch(addUrl, {
                 method: 'post',

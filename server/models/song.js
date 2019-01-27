@@ -1,8 +1,9 @@
 class Song {
-  constructor(raw) {
+  constructor(raw, duration) {
     this.raw = raw;
     this.upVotes = [];
     this.downVotes = [];
+    this.duration = duration;
   }
 
   upVote(user) {

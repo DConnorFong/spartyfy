@@ -1,12 +1,14 @@
 let querystring = require('querystring');
+let request = require('request-promise');
 let express = require('express');
 let router = express.Router();
 let Song = require('../models/song');
 const store = require('../store');
 
-router.post('/song', async function(req, res) {
-  let song = new Song(req.body.raw);
+const playUrl = 'https://api.spotify.com/v1/me/player/play';
+const featureUrl = 'https://api.spotify.com/v1/audio-features';
 
+router.post('/song', async function(req, res) {
   let tokenInfo = await store.get('tokenInfo');
 
   if (!tokenInfo) {
@@ -14,23 +16,94 @@ router.post('/song', async function(req, res) {
     return;
   }
 
+  let songRaw = req.body.raw;
+
+  let features = await getAudioFeatures(songRaw.id, tokenInfo.access_token);
+
+  if (features === null) {
+    res.status(500).send('Failed to find audio features');
+    return;
+  }
+
+  features = JSON.parse(features);
+
+  let song = new Song(req.body.raw, features.duration_ms);
+
   let playlist = await store.get('playlist');
 
   if (!playlist) {
-    playlist = [];
+    store.set('playlist', [song]);
+    let playResponse = await playSong();
+
+    if (playResponse === null) {
+      res.status(500).send('Failed to play music');
+      return;
+    }
+  } else {
+    playlist.push(song);
+    store.set('playlist', playlist);
   }
 
-  playlist.push(song);
-
-  console.log(JSON.stringify(playlist));
-  await store.set('playlist', playlist);
-
-  res.status(200).send('Added successfully.')
+  res.status(200).send('Added successfully');
 });
 
 router.get('/', async function(req, res) {
   let playlist = await store.get('playlist');
   res.status(200).send(JSON.stringify(playlist));
 });
+
+async function getAudioFeatures(id, accessToken) {
+  let options = {
+    method: 'GET',
+    uri: featureUrl + '/' + id,
+    headers: {
+      Authorization: 'Bearer ' + accessToken
+    }
+  };
+
+  try {
+    return await request(options);
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
+async function playSong() {
+  let playlist = await store.get('playlist');
+  let tokenInfo = await store.get('tokenInfo');
+
+  if (playlist.length === 0) {
+    store.set('playlist', undefined);
+    return;
+  }
+
+  let song = playlist[0];
+  console.log('Playing ' + song.raw.name);
+
+  let options = {
+    method: 'PUT',
+    uri: playUrl,
+    body: JSON.stringify({ uris: [song.raw.uri] }),
+    headers: {
+      Authorization: 'Bearer ' + tokenInfo.access_token
+    }
+  };
+
+  try {
+    let response = await request(options);
+    setTimeout(async function() {
+      console.log('Playing next song');
+      playlist = await store.get('playlist');
+      playlist = playlist.splice(1);
+      await store.set('playlist', playlist);
+      await playSong();
+    }, song.duration + 1000);
+    return response;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
 
 module.exports = router;
