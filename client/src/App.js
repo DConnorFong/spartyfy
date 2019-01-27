@@ -9,7 +9,6 @@ import GuestView from './views/GuestView';
 import Leaderboard from './components/Leaderboard';
 import Queue from './components/Queue';
 import './components/LoginPopup';
-import './styles/Tabbar.scss'
 
 class App extends Component {
   
