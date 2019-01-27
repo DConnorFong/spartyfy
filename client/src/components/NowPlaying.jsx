@@ -45,21 +45,25 @@ class NowPlaying  extends Component {
 
     render() {
         return (
-            <MDBRow>
-                <MDBCol className="d-none d-lg-block">
-                    <MDBCard id="player" style={{ width: "flex" }}>
+            <div className="row justify-content-center">
+                <div className="col d-none d-lg-block">
+                    <MDBCard id="player" style={{ width: "23" }}>
                         <h2>Now Playing</h2>
-                        <hr/>
+                        <div className="row justify-content-center">
+                        <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">MO BAMBA - Sheck Wes</marquee>
+                        </div>
                         <div class="text-center">
-                            <img src={this.state.albumArt} id="albumbig" className="img-fluid img-thumbnail" height="50"/>
+                            <img src={this.state.albumArt} id="albumbig" className="img-fluid img-thumbnail"/>
                         </div>
                         <MDBCardBody>   
-                        <div className="row">
+
+                        <div className="row justify-content-center">
                             <div className="col-3">
                                 <div className="text-center">
                                     <button type="button" class="btn btn-block btn-lg btn-danger center-block">
                                         <i className="fas fa-thumbs-down"></i>
-                                    </button>                    
+                                    </button>
+
                                 </div>       
                             </div>
                             <div className ="col-6">
@@ -78,7 +82,7 @@ class NowPlaying  extends Component {
 
                         </MDBCard>
                        
-                    </MDBCol>
+                    </div>
 
                 <MDBCol className="d-lg-none">
                     <MDBCard id="player" style={{height: "20", width: ""}}>
@@ -113,7 +117,7 @@ class NowPlaying  extends Component {
 
 
 
-            </MDBRow>  
+            </div>  
             );
     }
 }

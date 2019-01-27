@@ -1,36 +1,8 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import Search from '../components/search/Search';
-import {Tabbar, Tab, Navigator, Page} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import '../styles/Tabbar.scss'
-import Leaderboard from '../components/Leaderboard';
-
-class Tabs extends Component {
-    renderTabs() {
-        return [
-                        {
-                          content: <Search navigator={this.props.navigator}/>,
-                          tab: <Tab label="Search" icon="md-home" />
-                        },
-                        {
-                          content: <Leaderboard navigator={this.props.navigator}/>,
-                          tab: <Tab label="Leaderboard" icon="md-settings" />
-                        }];
-
-    }
-    render() { 
-        return (
-            <Page> 
-                <Tabbar
-                    renderTabs={this.renderTabs.bind(this)}
-                />
-             </Page>
-        );
-    } 
-}
-
 
 class GuestView extends Component {
     constructor() {
@@ -47,12 +19,10 @@ class GuestView extends Component {
       } 
     render() { 
         return ( 
-            <Page>
-                <Navigator
-                    initialRoute={{comp: Tabs, props: { key: 'tabs' }}}
-                    renderPage={this.renderPage}
-                />
-            </Page>
+            <React.Fragment>
+                <Search navigator={this.props.navigator}/>
+                <div id="spartyfy-nowplaying-footer">This is a test</div>
+            </React.Fragment>
         );
     }
 }
