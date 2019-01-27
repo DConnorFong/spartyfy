@@ -19,7 +19,7 @@ router.get('/song', async function (req, res, next) {
     return;
   }
 
-  console.log('Using access token: ' + sess.tokenInfo.access_token);
+  console.log('Using access token: ' + tokenInfo.access_token);
 
   let options = {
     uri: searchUrl + '?' + querystring.stringify({
@@ -34,6 +34,7 @@ router.get('/song', async function (req, res, next) {
   console.log(JSON.stringify(options));
 
   let searchResponse = await request(options);
+
   res.header('Content-Type', 'application/json');
   res.status(200).send(searchResponse);
 });
