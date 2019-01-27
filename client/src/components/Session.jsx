@@ -81,8 +81,8 @@ class Session  extends Component {
                                 <img src={this.state.albumArt[0]} className="img-fluid"/>
                             </div>
                             <div className="col-7">                            
-                                <h6>{this.state.songTitle[0]}</h6>
-                                <h6>{this.state.songArtist[0]}</h6>
+                                <h6 className="text-nowrap">{this.state.songTitle[0]}</h6>
+                                <h6 className="text-nowrap">{this.state.songArtist[0]}</h6>
                             </div>
                         </div>
                     </div>
@@ -95,8 +95,8 @@ class Session  extends Component {
                                 <img src={this.state.albumArt[1]} className="img-fluid"/>
                             </div>
                             <div className="col-7">                            
-                                <h6>{this.state.songTitle[1]}</h6>
-                                <h6>{this.state.songArtist[1]}</h6>
+                                <h6 className="text-nowrap">{this.state.songTitle[1]}</h6>
+                                <h6 className="text-nowrap">{this.state.songArtist[1]}</h6>
                             </div>
                         </div>
                     </div>
@@ -109,8 +109,8 @@ class Session  extends Component {
                                 <img src={this.state.albumArt[2]} className="img-fluid"/>
                             </div>
                             <div className="col-7">                            
-                                <h6>{this.state.songTitle[2]}</h6>
-                                <h6>{this.state.songArtist[2]}</h6>
+                                <h6 className="text-nowrap">{this.state.songTitle[2]}</h6>
+                                <h6 className="text-nowrap">{this.state.songArtist[2]}</h6>
                             </div>
                         </div>
                     </div>
