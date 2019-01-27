@@ -2,7 +2,7 @@ let request = require('request-promise');
 let querystring = require('querystring');
 let express = require('express');
 let router = express.Router();
-
+const store = require('../store');
 
 const clientId = '75132ae230634cb78e3418e631ddc3bb';
 const clientSecret = '1199d41fca5e47b29f5209c32fc491b4';
@@ -49,7 +49,7 @@ router.get('/token', async function(req, res, next) {
     try {
       let tokenResponse = await request(options);
       let tokenInfo = JSON.parse(tokenResponse);
-      req.session.tokenInfo = tokenInfo;
+      store.set('tokenInfo', tokenInfo);
       console.log('token:\n' + tokenInfo.access_token);
 
       res.redirect('http://localhost:3000/host?' +

@@ -8,6 +8,7 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let sessionsRouter = require('./routes/sessions');
 let searchRouter = require('./routes/search');
+let playlistsRouter = require('./routes/playlists');
 
 let app = express();
 
@@ -22,5 +23,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/search', searchRouter);
+app.use('/playlists', playlistsRouter);
 
 module.exports = app;
