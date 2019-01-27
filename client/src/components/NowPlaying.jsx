@@ -16,30 +16,30 @@ class NowPlaying  extends Component {
         return (
             <MDBRow>
                 <MDBCol className="d-none d-lg-block">
-                    <MDBCard style={{ width: "flex" }}>
+                    <MDBCard id="player" style={{ width: "flex" }}>
                         <h2>Now Playing</h2>
                         <MDBCardImage className="img-fluid img-thumbnail" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
                         <MDBCardBody>
-                        <MDBRow>
-                            <MDBCol>
+                        <div className="row">
+                            <div className="col-3">
                                 <div className="text-center">
-                                    <button type="button" class="btn btn-lg btn-primary center-block">
+                                    <button type="button" class="btn btn-block btn-lg btn-danger center-block">
                                         <i className="fas fa-thumbs-down"></i>
                                     </button>                    
                                 </div>       
-                            </MDBCol>
-                            <MDBCol>
+                            </div>
+                            <div className ="col-6">
                                 <MDBCardTitle className="text-uppercase text-center">Song Playing</MDBCardTitle>
                                 <MDBCardText className="text-center">Song Data</MDBCardText>
-                            </MDBCol>
-                            <MDBCol>
+                            </div>
+                            <div className="col-3">
                                   <div className="text-center">
-                                    <button type="button" class="btn btn-lg btn-primary center-block">
+                                    <button type="button" class="btn btn-block btn-lg btn-primary center-block">
                                         <i className="fas fa-thumbs-up"></i>
                                     </button>                    
                                 </div>    
-                            </MDBCol>
-                        </MDBRow>
+                            </div>
+                        </div>
                         </MDBCardBody>
 
                         </MDBCard>
