@@ -55,9 +55,6 @@ class LeaderboardComponent extends Component {
     }
 }
 class Leaderboard extends Component {
-    constructor() {
-        super();
-    }
     renderToolbar() {
         return (
           <Toolbar visible={false}>
@@ -69,7 +66,6 @@ class Leaderboard extends Component {
     render() {
         return(
             <Page renderToolbar={this.renderToolbar}>
-                <Header />
                 <LeaderboardComponent/>
             </Page>
         );
