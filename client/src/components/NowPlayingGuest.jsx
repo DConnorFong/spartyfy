@@ -74,7 +74,7 @@ class NowPlayingGuest extends Component {
         return ( 
             <div id="player-guest" className="container">
                 <div className="row">
-                    <div className="col-3 col-sm-2">
+                    <div className="col-3 col-sm-2 menu-item">
                         <img src={this.state.albumArt} id="album-small" className="img-fluid img-thumbnail"/>
                     </div>
                     <div className="col-7">
