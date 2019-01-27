@@ -28,9 +28,9 @@ router.post('/song', async function(req, res) {
   res.status(200).send('Added successfully.')
 });
 
-router.get('/', function(req, res) {
-  let sess = req.session;
-  res.status(200).send(JSON.stringify(sess.playlist));
+router.get('/', async function(req, res) {
+  let playlist = await store.get('playlist');
+  res.status(200).send(JSON.stringify(playlist));
 });
 
 module.exports = router;

@@ -9,12 +9,13 @@ class SearchSong extends Component {
         songTitle: this.props.songTitle,
         songArtist: this.props.songArtist,
         songImage: this.props.songImage,
-        id: this.props.id
-    }
+        id: this.props.id,
+        onClick: this.props.onClick
+    };
 
     render() { 
         return (
-            <ListItem key={this.props.id} className="spartyfy-search-song" tappable>
+            <ListItem key={this.props.id} className="spartyfy-search-song" tappable onClick={this.props.onClick}>
                 <div className="left">
                     <img src={this.state.songImage} alt="" width="50" height="50" />
                 </div>

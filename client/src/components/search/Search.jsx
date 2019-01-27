@@ -9,7 +9,9 @@ import 'onsenui/css/onsen-css-components.css';
 import '../../styles/Tabbar.scss'
 import queryString from 'query-string';
 
-const searchUrl = 'http://localhost:5000/search/song';
+const baseUrl = 'http://localhost:5000';
+const searchUrl = baseUrl + '/search/song';
+const addUrl = baseUrl + '/playlists/song';
 
 class SearchComponent extends Component {
     constructor() {
@@ -20,6 +22,7 @@ class SearchComponent extends Component {
         };
 
         this.searchSong = this.searchSong.bind(this);
+        this.addSong = this.addSong.bind(this);
     }
 
     gotoComponent(component, key) {
@@ -44,7 +47,9 @@ class SearchComponent extends Component {
                 </div>
                 <List
                     dataSource={this.state.songs}
-                    renderRow={(row, idx) => <SearchSong id={idx} songTitle={row.songTitle} songArtist={row.songArtist} songImage={row.songImage}/>}
+                    renderRow={(row, idx) => (
+                      <SearchSong id={idx} songTitle={row.songTitle} songArtist={row.songArtist} songImage={row.songImage} onClick={this.addSong(idx)}/>)
+                    }
                 />
             </div>
         );
@@ -55,11 +60,17 @@ class SearchComponent extends Component {
         let query = this.state.text;
 
         if (!query) {
+            console.error('Search must not be empty');
             return;
         }
 
         let results = await fetch(searchUrl + '?' +
             queryString.stringify({q: query}));
+
+        if (results.status !== 200) {
+            console.error('Search failed, is a host connected?');
+            return;
+        }
 
         results = await results.json();
 
@@ -95,6 +106,27 @@ class SearchComponent extends Component {
         });
 
         return songs;
+    }
+
+    addSong(idx) {
+        let thiss = this;
+        return async () => {
+            debugger;
+            let rawSong = thiss.state.rawSongs.tracks.items[idx];
+            let response = await fetch(addUrl, {
+                method: 'post',
+                body: JSON.stringify({raw: rawSong}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status !== 200) {
+                console.error('Failed to add song.');
+            } else {
+                thiss.setState({ rawSongs: null, songs: [], text: ''} );
+            }
+        }
     }
 }
 
