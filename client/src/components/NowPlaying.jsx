@@ -10,7 +10,7 @@ class NowPlaying  extends Component {
         this.state = {
             songTitle: '',
             songArtist: '',
-            albumArt: 'https://static1.squarespace.com/static/59decda418b27ddf3baeb5ba/t/59df0df5197aeac813c065d6/1507790325363/Black.jpg?format=1500w',
+            albumArt: 'http://www.myseumoftoronto.com/wp-content/uploads/2018/05/plain-black-background.jpg',
         };
 
         this.pollPlaylist = this.pollPlaylist.bind(this);
@@ -47,33 +47,35 @@ class NowPlaying  extends Component {
         return (
             <div className="row justify-content-center">
                 <div className="col d-none d-lg-block">
-                    <MDBCard id="player" style={{ width: "23" }}>
+                    <MDBCard id="player" style={{ width: "flex" }}>
                         <h2>Now Playing</h2>
                         <div className="row justify-content-center">
                         <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">{this.state.songTitle} - {this.state.songTitle}</marquee>
                         </div>
                         <div class="text-center">
-                            <img src={this.state.albumArt} id="albumbig" className="img-fluid img-thumbnail"/>
+                            <img src={this.state.albumArt} id="albumbig" className="img-fluid   "/>
                         </div>
                         <MDBCardBody>   
 
-                        <div className="row justify-content-center">
-                            <div className="col-3">
+                        <div className="row justify-content-between">
+                            <div className="col-4">
                                 <div className="text-center">
                                     <button type="button" class="btn btn-block btn-lg btn-danger center-block">
-                                        <i className="fas fa-thumbs-down"></i>
+                                        <i className="fas fa-thumbs-down"></i><span className="badge">3</span>
                                     </button>
 
                                 </div>       
                             </div>
-                            <div className ="col-6">
-                                <p id="songplaying" className="text-uppercase text-center">{this.state.songTitle}</p>
-                                <p className="text-center">{this.state.songArtist}</p>
+                            <div className="col-4">
+                                    <button type="button" class="btn btn-block btn-lg btn-dark center-block">
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </button>
                             </div>
-                            <div className="col-3">
+  
+                            <div className="col-4">
                                   <div className="text-center">
                                     <button type="button" class="btn btn-block btn-lg btn-primary center-block">
-                                        <i className="fas fa-thumbs-up"></i>
+                                        <i className="fas fa-thumbs-up"></i><span className="badge">3</span>
                                     </button>                    
                                 </div>    
                             </div>
