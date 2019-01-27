@@ -16,18 +16,15 @@ class App extends Component {
 
     return (
 
-      <div className="App"> 
-        <Session/>
-        <NowPlaying/>
         
-      </div>
+      
         <BrowserRouter>
             <Switch>
                 <Route path="/" component={ GuestView } exact />
                 <Route path="/host" component={ HostView }/> 
                 <Route component={ GuestView } />
             </Switch>
-    </BrowserRouter>
+        </BrowserRouter>
     );
   }
 }

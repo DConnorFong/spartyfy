@@ -14,36 +14,37 @@ class NowPlaying  extends Component {
      };
     render() { 
         return (
-            
-        <div className="container">
             <MDBRow>
                 <MDBCol className="d-none d-lg-block">
-                    <MDBCard style={{ width: "25rem" }}>
+                    <MDBCard style={{ width: "flex" }}>
                         <h2>Now Playing</h2>
                         <MDBCardImage className="img-fluid img-thumbnail" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
                         <MDBCardBody>
-                        <div className="row justify-content-center">
-                            <div className="col-3">
-                            <MDBBtn>
-                                <i className="fas fa-thumbs-down"></i>
-                            </MDBBtn>
-                            </div>
-                            <div className="col-6">
+                        <MDBRow>
+                            <MDBCol>
+                                <div className="text-center">
+                                    <button type="button" class="btn btn-lg btn-primary center-block">
+                                        <i className="fas fa-thumbs-down"></i>
+                                    </button>                    
+                                </div>       
+                            </MDBCol>
+                            <MDBCol>
                                 <MDBCardTitle className="text-uppercase text-center">Song Playing</MDBCardTitle>
-                                <MDBCardText>Song Data</MDBCardText>
-                            </div>
-                            <div className="col-3">
-                            <MDBBtn>
-                                <i className="fas fa-thumbs-up"></i>
-                            </MDBBtn>
-                            </div>
-                        </div>
+                                <MDBCardText className="text-center">Song Data</MDBCardText>
+                            </MDBCol>
+                            <MDBCol>
+                                  <div className="text-center">
+                                    <button type="button" class="btn btn-lg btn-primary center-block">
+                                        <i className="fas fa-thumbs-up"></i>
+                                    </button>                    
+                                </div>    
+                            </MDBCol>
+                        </MDBRow>
                         </MDBCardBody>
 
                         </MDBCard>
                        
                     </MDBCol>
-                    
 
                 <MDBCol className="d-lg-none">
                     <MDBCard style={{height: "20", width: ""}}>
@@ -79,7 +80,6 @@ class NowPlaying  extends Component {
 
 
             </MDBRow>  
-        </div>
             );
     }
 }
