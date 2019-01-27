@@ -14,7 +14,7 @@ class HostView extends Component {
         return ( 
             <div>
             <Header />
-            {/*LoginPopup/>*/}
+            <LoginPopup/>
             <Session/>
             <div className=" row justify-content-center align-items-top"> 
   

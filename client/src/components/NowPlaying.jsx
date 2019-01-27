@@ -50,7 +50,7 @@ class NowPlaying  extends Component {
                     <MDBCard id="player" style={{ width: "23" }}>
                         <h2>Now Playing</h2>
                         <div className="row justify-content-center">
-                        <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">MO BAMBA - Sheck Wes</marquee>
+                        <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">{this.state.songTitle} - {this.state.songTitle}</marquee>
                         </div>
                         <div class="text-center">
                             <img src={this.state.albumArt} id="albumbig" className="img-fluid img-thumbnail"/>
