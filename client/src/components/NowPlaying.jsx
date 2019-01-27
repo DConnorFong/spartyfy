@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer, MDBRow, MDBCol, MDBBtnGroup, MDBIcon } from 'mdbreact';
 import ('./NowPlaying.scss');
 
-const baseUrl = 'http://40.85.221.22:5000';
+const baseUrl = 'http://spartyfy.com:5000';
 const playlistUrl = baseUrl + '/playlists';
 const skipUrl = playlistUrl + '/skip';
 

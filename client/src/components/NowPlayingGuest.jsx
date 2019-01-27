@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './NowPlayingGuest.scss';
 
-const playlistUrl = 'http://40.85.221.22:5000/playlists';
+const playlistUrl = 'http://spartyfy.com:5000/playlists';
 
 class NowPlayingGuest extends Component {
     constructor() {
