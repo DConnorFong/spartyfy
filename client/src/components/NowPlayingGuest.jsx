@@ -6,7 +6,6 @@ const playlistUrl = baseUrl + '/playlists';
 const upVoteUrl = baseUrl + '/vote/up';
 const downVoteUrl = baseUrl + '/vote/down';
 
-
 class NowPlayingGuest extends Component {
     constructor() {
         super();
