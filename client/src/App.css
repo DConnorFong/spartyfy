@@ -30,3 +30,11 @@
     transform: rotate(360deg);
   }
 }
+
+#player{
+  background: #282c34
+}
+
+.thumbnails{
+  border: #f2f25c
+}

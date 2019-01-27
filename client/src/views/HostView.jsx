@@ -14,14 +14,14 @@ class HostView extends Component {
         return ( 
             <div>
             <Header />
-            {/* <LoginPopup/>  */}
+                 {/* <LoginPopup/>  */}
             
             <Session/>
-            <MDBRow className="d-flex justify-content-center"> 
-                <MDBCol lg="4" sm="12"><Leaderboard/></MDBCol>
-                <MDBCol lg="4" sm="12"><NowPlaying/></MDBCol>
-                <MDBCol lg="4" sm="12"><Queue/></MDBCol>
-            </MDBRow>
+            <div className=" row justify-content-center align-items-top"> 
+                <div className= "col-lg-4 col-md-12"><Leaderboard/></div>
+                <div className= "col-lg-4 col-md-12"><NowPlaying/></div>
+                <div className= "col-lg-4 col-md-12"><Queue/></div>
+            </div>
             </div>
             
         );
