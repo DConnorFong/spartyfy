@@ -84,43 +84,9 @@ class NowPlaying  extends Component {
 
                         </MDBCard>
                        
-                    </div>
-
-                <MDBCol className="d-lg-none">
-                    <MDBCard id="player" style={{height: "20", width: ""}}>
-                    <div className="row justify-content-between align-items-center">
-                        <div className="col-4">                          
-                            <img className="img-thumbnail" id="album" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt=""/>
-                        </div>
-                        <div className="col-4">
-                            <MDBCardTitle className="text-uppercase text-center text-nowrap">Now Playing</MDBCardTitle>
-                            <MDBCardTitle className="text-uppercase text-center"><small>Song Title</small></MDBCardTitle>
-                            <MDBCardText>Song Data</MDBCardText>
-                        </div>                      
-                        <div className="col-4">
-                            <div className="row justify-content-center">
-                                <div className="col-6">
-                                <button type="button" class="btn btn-primary">
-                                <i className="fas fa-thumbs-down"></i>
-                                </button>                                   
-                            </div>
-                              
-                            <div className="col-6">
-                                <button type="button" class="btn btn-primary">
-                                    <i className="fas fa-thumbs-up"></i>
-                                </button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    </MDBCard>
-                </MDBCol>
-
-
-
+                </div>  
             </div>  
-            );
+        );
     }
 }
  
