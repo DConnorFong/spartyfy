@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { Page, Toolbar } from 'react-onsenui';
+import Header from '../components/Header';
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
 import ('./Leaderboard.scss');
 
-class Leaderboard extends Component {
+class LeaderboardComponent extends Component {
     state = { 
         guests: [
             'DJ Jazzy Jeff',
@@ -36,6 +40,27 @@ class Leaderboard extends Component {
             );
             else
                 return <ol>{this.state.guests.map(guest => <li>{guest}</li>)}</ol>;
+    }
+}
+class Leaderboard extends Component {
+    constructor() {
+        super();
+    }
+    renderToolbar() {
+        return (
+          <Toolbar visible={false}>
+            <div className='right'>
+            </div>
+          </Toolbar>
+        );
+      }
+    render() {
+        return(
+            <Page renderToolbar={this.renderToolbar}>
+                <Header />
+                <LeaderboardComponent/>
+            </Page>
+        );
     }
 }
  

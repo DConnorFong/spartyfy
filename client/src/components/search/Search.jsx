@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import SearchSong from './SearchSong.jsx';
+import Header from '../../components/Header';
 import { MDBCol } from "mdbreact";
 import './Search.scss';
-import { SearchInput, Page, List, ListHeader, ListItem } from 'react-onsenui';
+import { Page, SearchInput, Toolbar, List} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 
-class Search extends Component {
+class SearchComponent extends Component {
     constructor() {
         super();
         this.state = { 
@@ -40,6 +41,10 @@ class Search extends Component {
             ]
         }
     }
+
+    gotoComponent(component, key) {
+        this.props.navigator.pushPage({comp: component, props: { key }});
+    }
     render() { 
         return (
             <div>
@@ -57,6 +62,25 @@ class Search extends Component {
         );
     }
     /* TODO: add an on-init fetch for Spotify top songs */
+}
+
+class Search extends Component {
+    renderToolbar() {
+        return (
+          <Toolbar visible={false}>
+            <div className='left'>
+            </div>
+          </Toolbar>
+        );
+      }
+    render() {
+        return(
+            <Page renderToolbar={this.renderToolbar}>
+                <Header/>
+                <SearchComponent/>
+            </Page>
+        );
+    }
 }
  
 export default Search;
