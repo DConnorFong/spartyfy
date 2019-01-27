@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer, MDBRow, MDBCol, MDBBtnGroup, MDBIcon } from 'mdbreact';
 import ('./NowPlaying.scss');
 
-const playlistUrl = 'http://localhost:5000/playlists';
+const playlistUrl = 'http://40.85.221.22:5000/playlists';
 
 class NowPlaying  extends Component {
     constructor() {
