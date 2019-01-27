@@ -1,11 +1,9 @@
 .spartyfy-search-song {
     background-color: #191414;
-    border: 2px solid grey;
-    padding: 10px;
+    opacity: 50%;
 
     .spartyfy-search-song-content {
+        font-size: 12px;
         color: #1db954;
-        font-weight: bold;
-        text-align: right;
     }
 }

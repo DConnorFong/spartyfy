@@ -15,13 +15,15 @@ class SearchSong extends Component {
 
     render() { 
         return (
-            <ListItem key={this.props.id} tappable onClick={this.props.onClick}>
-                <div className="center">
-                    {this.state.songTitle}<br/>
-                    {this.state.songArtist}
-                </div>
+            <ListItem key={this.props.id} className="spartyfy-search-song" tappable onClick={this.props.onClick}>
                 <div className="left">
                     <img src={this.state.songImage} alt="" width="50" height="50" />
+                </div>
+                <div className="center spartyfy-search-song-content">
+                    {this.state.songTitle}
+                    <br />
+                    <br />
+                    {this.state.songArtist}
                 </div>
             </ListItem>
         );
