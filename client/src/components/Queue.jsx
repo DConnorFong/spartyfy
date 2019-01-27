@@ -4,11 +4,11 @@ class Queue extends Component {
     state = { 
         songs: [
             'songOne',
-            'songOne',
-            'songOne',
-            'songOne',
-            'songOne',
-            'songOne'
+            'songTwo',
+            'songThree',
+            'songFour',
+            'songFive',
+            'songSix'
         ]    
 
     }

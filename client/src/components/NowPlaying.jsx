@@ -5,11 +5,11 @@ import ('./NowPlaying.scss');
 
 class NowPlaying  extends Component {
     state = { 
-       /* songTitle: this.props.project.songTitle,
-        songData: this.props.project.songData,
-        albumArt: this.props.project.albumArt,
-        likeCount: this.props.project.likeCount,
-        dislikeCount: this.props.project.dislikeCount,*/
+        songTitle: 'Mo Bamba',
+        songData: 'Sheck Wes',
+        albumArt: 'https://lastfm-img2.akamaized.net/i/u/ar0/26e00f0e05b0203e48e92e791c867425.jpg',
+       // likeCount: this.props.project.likeCount,
+       // dislikeCount: this.props.project.dislikeCount
         
      };
     render() { 
@@ -18,8 +18,11 @@ class NowPlaying  extends Component {
                 <MDBCol className="d-none d-lg-block">
                     <MDBCard id="player" style={{ width: "flex" }}>
                         <h2>Now Playing</h2>
-                        <MDBCardImage className="img-fluid img-thumbnail" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-                        <MDBCardBody>
+                        <hr/>
+                        <div class="text-center">
+                            <img src="https://lastfm-img2.akamaized.net/i/u/ar0/26e00f0e05b0203e48e92e791c867425.jpg" id="albumbig" className="img-fluid img-thumbnail" />
+                        </div>
+                        <MDBCardBody>   
                         <div className="row">
                             <div className="col-3">
                                 <div className="text-center">
@@ -29,8 +32,8 @@ class NowPlaying  extends Component {
                                 </div>       
                             </div>
                             <div className ="col-6">
-                                <MDBCardTitle className="text-uppercase text-center">Song Playing</MDBCardTitle>
-                                <MDBCardText className="text-center">Song Data</MDBCardText>
+                                <p id="songplaying" className="text-uppercase text-center">Mo Bamba</p>
+                                <p className="text-center">Sheck Wes</p>
                             </div>
                             <div className="col-3">
                                   <div className="text-center">
@@ -47,7 +50,7 @@ class NowPlaying  extends Component {
                     </MDBCol>
 
                 <MDBCol className="d-lg-none">
-                    <MDBCard style={{height: "20", width: ""}}>
+                    <MDBCard id="player" style={{height: "20", width: ""}}>
                     <div className="row justify-content-between align-items-center">
                         <div className="col-4">                          
                             <img className="img-thumbnail" id="album" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt=""/>
