@@ -8,7 +8,7 @@ import 'onsenui/css/onsen-css-components.css';
 import '../../styles/Tabbar.scss'
 import queryString from 'query-string';
 
-const baseUrl = 'http://spartyfy.com:5000';
+const baseUrl = 'http://www.spartyfy.com:5000';
 const searchUrl = baseUrl + '/search/song';
 const addUrl = baseUrl + '/playlists/song';
 
