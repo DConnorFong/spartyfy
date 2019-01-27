@@ -1,5 +1,16 @@
 .spartify-leaderboard {
+    background-color: #191414;
+    height: 100%;
+
+    h3 {
+        color: #f2f25c;
+        font-family: 'Permanent Marker', cursive;
+        padding: 10px;
+    }
+
     li {
+        color: white;
+        font-weight: bold; 
         text-align: left !important;
     }
 }

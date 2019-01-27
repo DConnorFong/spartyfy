@@ -16,7 +16,7 @@ class Queue extends Component {
     render() { 
         return ( 
             <React.Fragment>
-                <div className="container spartify-leaderboard">
+                <div className="container">
                     <div className="row justify-content-center">
                         <h3>What's Up Next?</h3>
                     </div>
