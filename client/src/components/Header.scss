@@ -1,7 +1,14 @@
 #spartyfy-header {
     background-color: #191414;
+    padding: 20px;
     h1 {
         color: #1db954;
         font-weight: bold;
+
+        .spartyfy-highlight {
+            color: #f2f25c;
+            font-family: 'Permanent Marker', cursive;
+            padding-right: 3px;
+        }
     }
 }
