@@ -25,6 +25,7 @@ class LeaderboardComponent extends Component {
                     <div className="row justify-content-center">
                         <h3>Who's Hot Tonight?</h3>
                     </div>
+                    <hr />
                     <div className="row justify-content-center">
                         {this.renderGuests()}
                     </div>
@@ -39,7 +40,18 @@ class LeaderboardComponent extends Component {
                 <p>No guests yet...</p>
             );
             else
-                return <ol>{this.state.guests.map(guest => <li>{guest}</li>)}</ol>;
+                return <ol>{this.state.guests.map((guest, index) => <li className={this.styleRanking(index)}>{guest}</li>)}</ol>;
+    }
+
+    styleRanking(index) {
+        if (index === 0) 
+            return 'gold';
+        else if (index === 1)
+            return 'silver';
+        else if (index === 2)
+            return 'bronze';
+        else
+            return '';
     }
 }
 class Leaderboard extends Component {

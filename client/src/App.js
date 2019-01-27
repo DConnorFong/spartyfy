@@ -21,7 +21,7 @@ class App extends Component {
                 <Route path="/host" component={ HostView }/> 
                 <Route component={ GuestView } />
             </Switch>
-    </BrowserRouter>
+        </BrowserRouter>
     );
   }
 }

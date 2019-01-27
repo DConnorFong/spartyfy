@@ -5,37 +5,42 @@ import ('./NowPlaying.scss');
 
 class NowPlaying  extends Component {
     state = { 
-       /* songTitle: this.props.project.songTitle,
-        songData: this.props.project.songData,
-        albumArt: this.props.project.albumArt,
-        likeCount: this.props.project.likeCount,
-        dislikeCount: this.props.project.dislikeCount,*/
+        songTitle: 'Mo Bamba',
+        songData: 'Sheck Wes',
+        albumArt: 'https://lastfm-img2.akamaized.net/i/u/ar0/26e00f0e05b0203e48e92e791c867425.jpg',
+       // likeCount: this.props.project.likeCount,
+       // dislikeCount: this.props.project.dislikeCount
         
      };
     render() { 
         return (
-            
-        <div className="container">
             <MDBRow>
                 <MDBCol className="d-none d-lg-block">
-                    <MDBCard style={{ width: "25rem" }}>
+                    <MDBCard id="player" style={{ width: "flex" }}>
                         <h2>Now Playing</h2>
-                        <MDBCardImage className="img-fluid img-thumbnail" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-                        <MDBCardBody>
-                        <div className="row justify-content-center">
+                        <hr/>
+                        <div class="text-center">
+                            <img src="https://lastfm-img2.akamaized.net/i/u/ar0/26e00f0e05b0203e48e92e791c867425.jpg" id="albumbig" className="img-fluid img-thumbnail" />
+                        </div>
+                        <MDBCardBody>   
+                        <div className="row">
                             <div className="col-3">
-                            <MDBBtn>
-                                <i className="fas fa-thumbs-down"></i>
-                            </MDBBtn>
+                                <div className="text-center">
+                                    <button type="button" class="btn btn-block btn-lg btn-danger center-block">
+                                        <i className="fas fa-thumbs-down"></i>
+                                    </button>                    
+                                </div>       
                             </div>
-                            <div className="col-6">
-                                <MDBCardTitle className="text-uppercase text-center">Song Playing</MDBCardTitle>
-                                <MDBCardText>Song Data</MDBCardText>
+                            <div className ="col-6">
+                                <p id="songplaying" className="text-uppercase text-center">Mo Bamba</p>
+                                <p className="text-center">Sheck Wes</p>
                             </div>
                             <div className="col-3">
-                            <MDBBtn>
-                                <i className="fas fa-thumbs-up"></i>
-                            </MDBBtn>
+                                  <div className="text-center">
+                                    <button type="button" class="btn btn-block btn-lg btn-primary center-block">
+                                        <i className="fas fa-thumbs-up"></i>
+                                    </button>                    
+                                </div>    
                             </div>
                         </div>
                         </MDBCardBody>
@@ -43,10 +48,9 @@ class NowPlaying  extends Component {
                         </MDBCard>
                        
                     </MDBCol>
-                    
 
                 <MDBCol className="d-lg-none">
-                    <MDBCard style={{height: "20", width: ""}}>
+                    <MDBCard id="player" style={{height: "20", width: ""}}>
                     <div className="row justify-content-between align-items-center">
                         <div className="col-4">                          
                             <img className="img-thumbnail" id="album" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt=""/>
@@ -79,7 +83,6 @@ class NowPlaying  extends Component {
 
 
             </MDBRow>  
-        </div>
             );
     }
 }

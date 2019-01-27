@@ -1,5 +1,35 @@
 .spartify-leaderboard {
+    background-color: #191414;
+    height: 100%;
+    border-radius: 10px;
+    
+
+    h3 {
+        color: #f2f25c;
+        text-shadow: 2px 2px 2px #a3a33f;
+        font-family: 'Permanent Marker', cursive;
+        padding: 10px 10px 0px 10px;
+    }
+
+    hr {
+        border-top: 2px solid #1db954;
+    }
+
     li {
+        color: white;
+        font-weight: bold; 
         text-align: left !important;
+    }
+
+    .gold {
+        color: 	#daa520
+    }
+
+    .silver {
+        color: #c0c0c0;
+    }
+
+    .bronze {
+        color: #cd7f32;
     }
 }
