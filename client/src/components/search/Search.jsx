@@ -6,6 +6,7 @@ import './Search.scss';
 import { Page, SearchInput, Toolbar, List, Button} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
+import '../../styles/Tabbar.scss'
 import queryString from 'query-string';
 
 const searchUrl = 'http://localhost:5000/search/song';
@@ -26,17 +27,21 @@ class SearchComponent extends Component {
     }
     render() { 
         return (
-            <div>
-                <span>
-                    <SearchInput
-                    style={{width: "100%"}}
-                    value={this.state.text}
-                    onChange={(event) => { this.setState({text: event.target.value, isSearch: false})} }
-                    modifier='material'
-                    placeholder='Search' />
-                    <Button
-                    onClick={this.searchSong}>Search</Button>
-                </span>
+            <div className="container spartyfy-search">
+                <div className="row">
+                    <div className="col-8 col-md-10 spartyfy-searchbar">
+                        <SearchInput
+                            style={{width: "100%"}}
+                            value={this.state.text}
+                            onChange={(event) => { this.setState({text: event.target.value, isSearch: false})} }
+                            modifier='material'
+                            placeholder='Search' 
+                        />                   
+                    </div>
+                    <div className="col-4 col-md-2 spartyfy-button d-flex justify-content-center">
+                        <Button onClick={this.searchSong}>Search</Button>
+                    </div>
+                </div>
                 <List
                     dataSource={this.state.songs}
                     renderRow={(row, idx) => <SearchSong id={idx} songTitle={row.songTitle} songArtist={row.songArtist} songImage={row.songImage}/>}
@@ -104,10 +109,10 @@ class Search extends Component {
       }
     render() {
         return(
-            <Page renderToolbar={this.renderToolbar}>
-                <Header/>
-                <SearchComponent/>
-            </Page>
+                <Page renderToolbar={this.renderToolbar}>
+                    <Header/>
+                    <SearchComponent/>
+                </Page>
         );
     }
 }

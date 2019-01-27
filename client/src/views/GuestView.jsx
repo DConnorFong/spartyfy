@@ -4,6 +4,7 @@ import Search from '../components/search/Search';
 import {Tabbar, Tab, Navigator, Page} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
+import '../styles/Tabbar.scss'
 import Leaderboard from '../components/Leaderboard';
 
 class Tabs extends Component {
