@@ -72,7 +72,6 @@ class SearchComponent extends Component {
         console.log(JSON.stringify(items));
         let songs = items.map(function (item) {
             console.log(JSON.stringify(item));
-            debugger;
             let song = {};
 
             song.songTitle = item.name;
