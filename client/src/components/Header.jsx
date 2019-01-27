@@ -5,7 +5,7 @@ const Header = () => {
     return ( 
         <React.Fragment>
             <div id="spartyfy-header" className="container d-flex justify-content-center">
-                <h1>SPARTYFY</h1>
+                <h1>S<span className="spartyfy-highlight">PARTY</span>FY <i class="fas fa-play"></i></h1>
             </div>
         </React.Fragment>
     );

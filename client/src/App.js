@@ -15,9 +15,6 @@ class App extends Component {
   render() {
 
     return (
-
-        
-      
         <BrowserRouter>
             <Switch>
                 <Route path="/" component={ GuestView } exact />

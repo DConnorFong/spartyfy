@@ -2,13 +2,14 @@ let request = require('request-promise');
 let querystring = require('querystring');
 let express = require('express');
 let router = express.Router();
+const store = require('../store');
 
 const searchUrl = 'https://api.spotify.com/v1/search';
 
 router.get('/song', async function (req, res, next) {
-  let sess = req.session;
+  let tokenInfo = await store.get('tokenInfo');
 
-  if (!sess.tokenInfo) {
+  if (!tokenInfo) {
     res.status(400).send('You must login first');
     return;
   }
@@ -26,7 +27,7 @@ router.get('/song', async function (req, res, next) {
       type: 'track'
     }),
     headers: {
-      Authorization: 'Bearer ' + sess.tokenInfo.access_token
+      Authorization: 'Bearer ' + tokenInfo.access_token
     }
   };
 

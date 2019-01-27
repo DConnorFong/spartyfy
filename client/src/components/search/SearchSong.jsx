@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
+import { Page, List, ListHeader, ListItem } from 'react-onsenui';
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
 import './SearchSong.scss';
 
 class SearchSong extends Component {
     state = { 
-        songTitle: this.props.song.songTitle,
-        songArtist: this.props.song.songArtist,
-        songImage: this.props.song.songImage
+        songTitle: this.props.songTitle,
+        songArtist: this.props.songArtist,
+        songImage: this.props.songImage,
+        id: this.props.id
     }
 
     render() { 
-        return (  
-            <div className="container spartyfy-search-song">
-                <div className="row">
-                    <div className="col-6">
-                        <img src={this.state.songImage} alt="This is the album art" width="75" height="" />
-                    </div>
-                    <div className="col-6 spartyfy-search-song-content">
-                        <p><b>{this.state.songTitle}</b></p>
-                        <p>{this.state.songArtist}</p>
-                    </div>
+        return (
+            <ListItem key={this.props.id} tappable>
+                <div className="center">
+                    {this.state.songTitle}<br/>
+                    {this.state.songArtist}
                 </div>
-            </div>
+                <div className="left">
+                    <img src={this.state.songImage} alt="" width="50" height="50" />
+                </div>
+            </ListItem>
         );
     }
 }
