@@ -58,6 +58,8 @@ class SearchComponent extends Component {
     async searchSong() {
         let query = this.state.text;
 
+        this.setState({songs: []});
+
         if (!query) {
             console.error('Search must not be empty');
             return;
@@ -76,7 +78,6 @@ class SearchComponent extends Component {
         console.log(results);
 
         this.setState({rawSongs: results});
-        this.setState({songs: []});
         this.setState({songs: this.convertToSongs(results)})
     }
 
