@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import HostView from './views/HostView';
 import GuestView from './views/GuestView';
+import Leaderboard from './components/Leaderboard';
+import Queue from './components/Queue';
+import './components/LoginPopup';
 
 class App extends Component {
   render() {
