@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchSong from './SearchSong.jsx';
 import Header from '../../components/Header';
-import { MDBCol } from "mdbreact";
 import './Search.scss';
 import { Page, SearchInput, Toolbar, List, Button} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
@@ -111,7 +110,6 @@ class SearchComponent extends Component {
     addSong(idx) {
         let thiss = this;
         return async () => {
-            debugger;
             let rawSong = thiss.state.rawSongs.tracks.items[idx];
             let response = await fetch(addUrl, {
                 method: 'post',
@@ -141,10 +139,10 @@ class Search extends Component {
       }
     render() {
         return(
-                <Page renderToolbar={this.renderToolbar}>
-                    <Header/>
-                    <SearchComponent/>
-                </Page>
+            <Page renderToolbar={this.renderToolbar}>
+                <Header/>
+                <SearchComponent/>
+            </Page>
         );
     }
 }
