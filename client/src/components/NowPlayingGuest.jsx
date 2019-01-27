@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './NowPlayingGuest.scss';
 
-const playlistUrl = 'http://localhost:5000/playlists';
+const baseUrl = 'http://localhost:5000';
+const playlistUrl = baseUrl + '/playlists';
+const upVoteUrl = baseUrl + '/vote/up';
+const downVoteUrl = baseUrl + '/vote/down';
+
 
 class NowPlayingGuest extends Component {
     constructor() {
@@ -15,6 +19,30 @@ class NowPlayingGuest extends Component {
         this.pollPlaylist = this.pollPlaylist.bind(this);
 
         this.pollPlaylist();
+    }
+
+    upVote() {
+        fetch(upVoteUrl, {
+            method: 'put'
+        }).then(res => {
+            if (res.status !== 204) {
+                console.error('Up vote failed');
+            }
+        }).catch(err => {
+            console.error('An error occured while up voting: ' + err);
+        });
+    }
+
+    downVote() {
+        fetch(downVoteUrl, {
+            method: 'put'
+        }).then(res => {
+            if (res.status !== 204) {
+                console.error('Down vote failed');
+            }
+        }).catch(err => {
+            console.error('An error occured while down voting: ' + err);
+        });
     }
 
     pollPlaylist() {
@@ -46,8 +74,8 @@ class NowPlayingGuest extends Component {
         return ( 
             <div id="player-guest" className="container">
                 <div className="row">
-                    <div className="col-3 col-sm-2">
-                        <img src={this.state.albumArt} id="album-small" className="img-fluid"/>
+                    <div className="col-3 col-sm-2 menu-item">
+                        <img src={this.state.albumArt} id="album-small" className="img-fluid img-thumbnail"/>
                     </div>
                     <div className="col-7">
                         <p className="player-guest-nowplaying">Now Playing</p>
@@ -55,10 +83,10 @@ class NowPlayingGuest extends Component {
                         <p>{this.state.songArtist}</p>
                     </div>
                     <div className="col-2 col-sm-3">
-                        <button type="button" class="btn btn-block btn btn-primary center-block">
+                        <button type="button" class="btn btn-block btn btn-primary center-block" onClick={this.upVote}>
                             <i className="fas fa-thumbs-up"></i>
                         </button> 
-                        <button type="button" class="btn btn-block btn btn-danger center-block">
+                        <button type="button" class="btn btn-block btn btn-danger center-block" onClick={this.downVote}>
                             <i className="fas fa-thumbs-down"></i>
                         </button>
                     </div>
