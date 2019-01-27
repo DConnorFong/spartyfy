@@ -15,12 +15,6 @@ class App extends Component {
   render() {
 
     return (
-
-      <div className="App"> 
-        <Session/>
-        <NowPlaying/>
-        
-      </div>
         <BrowserRouter>
             <Switch>
                 <Route path="/" component={ GuestView } exact />
