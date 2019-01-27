@@ -17,7 +17,7 @@ class HostView extends Component {
             {/* <LoginPopup/>  */}
             
             <Session/>
-            <MDBRow className="justify-content-center align-items-center"> 
+            <MDBRow className="d-flex justify-content-center"> 
                 <MDBCol lg="4" sm="12"><Leaderboard/></MDBCol>
                 <MDBCol lg="4" sm="12"><NowPlaying/></MDBCol>
                 <MDBCol lg="4" sm="12"><Queue/></MDBCol>
