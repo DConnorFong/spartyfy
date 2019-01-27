@@ -40,7 +40,7 @@ class LeaderboardComponent extends Component {
                 <p>No guests yet...</p>
             );
             else
-                return <ol>{this.state.guests.map((guest, index) => <li className={this.styleRanking(index)}>{guest}</li>)}</ol>;
+                return <ol className="list-group">{this.state.guests.map((guest, index) => <li className={this.styleRanking(index)}>{guest}</li>)}</ol>;
     }
 
     styleRanking(index) {
@@ -69,7 +69,7 @@ class Leaderboard extends Component {
     render() {
         return(
             <Page renderToolbar={this.renderToolbar}>
-                <Header />
+                
                 <LeaderboardComponent/>
             </Page>
         );

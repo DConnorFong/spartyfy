@@ -1,36 +1,58 @@
-#album{
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-}
-#albumbig{
-    object-fit: cover;
+.spartyfy-player{
+    
+    //background:  #191414;
+
+    #album{
+        width: 150px;
+        height: 150px;
+        background-size: cover;
+    }
+    #albumbig{
+        object-fit: cover;
+    }
+
+    #player{
+        background:  #191414;
+    }
+
+    h3{
+        color: #f2f25c;
+        font-family: 'Permanent Marker', cursive;
+        text-shadow: 2px 2px 2px #a3a33f;
+        font-family: 'Permanent Marker', cursive;
+        padding: 4px 10px 0px 10px;
+        font-size: 28px;
+    }
+    p{
+        color: white;
+        text-shadow: 2px 1px 1px #72716f;
+        font-weight: bold; 
+    }
+
+    #songplaying{
+        color: white;
+        text-shadow: 2px 1px 1px #72716f;
+        font-weight: bold; 
+        font-size: 1.5rem;
+    }
+
+    .img-thumbnail{
+        background-color: #f2f25c; 
+    }
+
+    hr{
+        border-top: 1px solid #1db954;
+        padding: 10px;
+        
+        
+    }
+
+    .badge{
+        font-size: 1.2rem;
+    }
+
 }
 
-#player{
-    background:  #191414;
-  }
-
-h2{
-    color: #f2f25c;
-    font-family: 'Permanent Marker', cursive;
-    padding: 10px;
+.page__content h3{
+    font-size: 25px;
 }
-p{
-    color: white;
-    padding: 0px;
-}
-
-#songplaying{
-    font-size: 1.5rem;
-    padding: 0px;
-}
-
-.img-thumbnail{
-    background-color: #f2f25c; 
-}
-
-hr{
-    border-color: 1db954;
-}
-

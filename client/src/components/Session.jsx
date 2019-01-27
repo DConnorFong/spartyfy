@@ -3,10 +3,14 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, 
 import ('./Session.scss');
 class Session  extends Component {
     state = { 
-        /*songTitle;
-        Session
-        Player
-        */
+       
+        SessionName: [
+            'litpartysesh6969'
+        ],
+        Person:[
+            'Jason_Laptop'
+        ]
+
      }
     render() { 
         return (
@@ -14,14 +18,32 @@ class Session  extends Component {
         <div className="container">
             <div className="jumbotron">
                 <div id="content">
-                    <h1 className>Session Name:</h1>
-                    <h3>Playing On:</h3>
+                    <h1 className="text-nowrap">Session Name:  {this.renderSessionName()}</h1>
+
+                    <h3>Playing On:  {this.renderPerson()}</h3>
                 </div>
                 
             </div>
             </div>
 
             );
+    }
+    renderSessionName() {
+        if (this.state.SessionName.length === 0)
+            return (
+                <p>No songs coming up...</p>
+            );
+            else
+                return <span id="sessionName">{this.state.SessionName}</span>;
+    }
+
+    renderPerson() {
+        if (this.state.Person.length === 0)
+            return (
+                <p>No songs coming up...</p>
+            );
+            else
+                return <span id="Person">{this.state.Person}</span>;
     }
 }
  

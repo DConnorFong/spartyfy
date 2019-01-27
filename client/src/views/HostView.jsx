@@ -13,14 +13,16 @@ class HostView extends Component {
     render() { 
         return ( 
             <div>
+                
+            <h1 id="HostText">You're Hosting</h1>
             <Header />
                  {/* <LoginPopup/>  */}
             
             <Session/>
             <div className=" row justify-content-center align-items-top"> 
-                <div className= "col-lg-4 col-md-12"><Leaderboard/></div>
-                <div className= "col-lg-4 col-md-12"><NowPlaying/></div>
-                <div className= "col-lg-4 col-md-12"><Queue/></div>
+                <div className= "col-lg-4 col-sm-12"><Leaderboard/></div>
+                <div className= "col-lg-4 col-sm-12"><NowPlaying/></div>
+                <div className= "col-lg-4 col-sm-12"><Queue/></div>
             </div>
             </div>
             

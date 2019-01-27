@@ -1,6 +1,14 @@
-.spartify-leaderboard {
-    background-color: #191414;
+.spartyfy-queue{
+    background:  #191414;
     height: 100%;
+
+   
+
+
+
+    hr {
+        border-top: 2px solid #1db954;
+    }
 
     h3 {
         color: #f2f25c;
@@ -21,21 +29,8 @@
         font-size: 1.3rem
     }
 
-    .gold {
-        color: 	#daa520;
-        font-size: 2rem;
-        text-shadow: 2px 1px 1px #7a6825;
-    }
+}
 
-    .silver {
-        color: #c0c0c0;
-        font-size: 1.7rem;
-        text-shadow: 2px 2px 2px #66645d;
-    }
-
-    .bronze {
-        color: #cd7f32;
-        font-size: 1.5rem;
-        text-shadow: 2px 1px 1px #4c3f0d;
-    }
+.page__content h3{
+    font-size: 25px;
 }

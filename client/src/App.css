@@ -31,4 +31,14 @@
   }
 }
 
+body{
+  background-image: url("https://images.unsplash.com/photo-1495420434947-41fd0fbab21f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80");
+  background-size: cover;
+}
+#HostText{
+  color: #f2f25c;
+  text-shadow: 2px 2px 2px #a3a33f;
+  font-family: 'Permanent Marker', cursive;
+  padding: 10px 10px 0px 10px;
+}
 
