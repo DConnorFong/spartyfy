@@ -19,7 +19,7 @@ class NowPlaying  extends Component {
                     <MDBCard id="player" style={{ width: "23" }}>
                         <h2>Now Playing</h2>
                         <div className="row justify-content-center">
-                        <marquee behavior="scroll" direction="left" className="col-8">Here is some scrolling text... right to left!</marquee>
+                        <marquee behavior="scroll" direction="left" className="col-8" id="songplaying">MO BAMBA - Sheck Wes</marquee>
                         </div>
                         <div class="text-center">
                             <img src="http://www.flat-e.com/flate5/wp-content/uploads/cover-960x857.jpg" id="albumbig" className="img-fluid" />
@@ -36,8 +36,7 @@ class NowPlaying  extends Component {
                                 </div>       
                             </div>
                             <div className="col-6">
-                            <p id="songplaying" className="text-uppercase text-center">Mo Bamba</p>
-                            <p className="text-center">Sheck Wes</p>
+                        
                             </div>
                             <div className="col-3">
                                   <div className="text-center">
