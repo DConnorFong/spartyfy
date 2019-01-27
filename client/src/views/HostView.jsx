@@ -17,7 +17,7 @@ class HostView extends Component {
             <LoginPopup />
             <Session/>
             <div className=" row justify-content-center align-items-top"> 
-                <div className= "col-lg-4 col-md-12"><NowPlaying/></div>
+                <div className= "col col-md-auto"><NowPlaying/></div>
             </div>
             </div>
             

@@ -14,14 +14,14 @@ class Session  extends Component {
         <div className="container" id="Session">
             <div className="jumbotron">
                 
-                <div className="row justify-content-center align-items-center">
+                <div className="row justify-content-between align-items-center">
                     
-                    <div className="col-3">
+                    <div className="col-lg-auto">
                         <h2>Next Up:</h2>
                     </div>
                     
                     
-                    <div className="col-3">
+                    <div className="col-md-auto">
                         
                         <div className="row align-items-center justify-content-flex-start">
                             <div className="col-2">
@@ -37,7 +37,7 @@ class Session  extends Component {
                         </div>
                     </div>
 
-                    <div className="col-3">
+                    <div className="col-md-auto">
                         <div className="row align-items-center justify-content-flex-start">
                                 <div className="col-2">
                                     <p>2</p>
@@ -52,7 +52,7 @@ class Session  extends Component {
                         </div>
                     </div>
 
-                    <div className="col-3">
+                    <div className="col-md-auto">
                         <div className="row align-items-center justify-content-flex-start">
                                 <div className="col-2">
                                     <p>3</p>

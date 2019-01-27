@@ -46,6 +46,17 @@
         width: 45px;
         height: 45px;
     }
+
+    @media only screen and (max-width: 1200px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+          width: 100%;
+        }
+
+      }
+    
 }
+
+
 
 
