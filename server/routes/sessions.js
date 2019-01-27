@@ -7,7 +7,7 @@ const store = require('../store');
 const clientId = '75132ae230634cb78e3418e631ddc3bb';
 const clientSecret = '1199d41fca5e47b29f5209c32fc491b4';
 const stateKey = 'spotify_auth_state';
-const redirectUri = 'http://spartyfy.com:5000/sessions/token';
+const redirectUri = 'http://www.spartyfy.com:5000/sessions/token';
 
 router.get('/login', function(req, res) {
   let state = generateRandomString(16);
@@ -52,7 +52,7 @@ router.get('/token', async function(req, res, next) {
       store.set('tokenInfo', tokenInfo);
       console.log('token:\n' + tokenInfo.access_token);
 
-      res.redirect('http://spartyfy.com:3000/host?' +
+      res.redirect('http://www.spartyfy.com/host?' +
         querystring.stringify({visible: false}));
     } catch (err) {
       let message = `Failed to request token from Spotify\nError: ${err}`;

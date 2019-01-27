@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './NowPlayingGuest.scss';
 
-const baseUrl = 'http://spartyfy.com:5000';
+const baseUrl = 'http://www.spartyfy.com:5000';
 const playlistUrl = baseUrl + '/playlists';
 const upVoteUrl = baseUrl + '/vote/up';
 const downVoteUrl = baseUrl + '/vote/down';
