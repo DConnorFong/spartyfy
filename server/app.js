@@ -23,6 +23,4 @@ app.use('/users', usersRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/search', searchRouter);
 
-app.listen(5000);
-
 module.exports = app;

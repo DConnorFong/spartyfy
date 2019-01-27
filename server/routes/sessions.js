@@ -7,7 +7,7 @@ let router = express.Router();
 const clientId = '75132ae230634cb78e3418e631ddc3bb';
 const clientSecret = '1199d41fca5e47b29f5209c32fc491b4';
 const stateKey = 'spotify_auth_state';
-const redirectUri = 'http://localhost:3000/sessions/token';
+const redirectUri = 'http://localhost:5000/sessions/token';
 
 router.get('/login', function(req, res) {
   let state = generateRandomString(16);
@@ -51,7 +51,8 @@ router.get('/token', async function(req, res, next) {
       let tokenInfo = JSON.parse(tokenResponse);
       req.session.tokenInfo = tokenInfo;
 
-      res.send("This should be a redirect back to the front end.");
+      res.redirect('http://localhost:3000/host?' +
+        querystring.stringify({visible: false}));
     } catch (err) {
       let message = `Failed to request token from Spotify\nError: ${err}`;
       console.log(message);
