@@ -8,7 +8,7 @@ import 'onsenui/css/onsen-css-components.css';
 import '../../styles/Tabbar.scss'
 import queryString from 'query-string';
 
-const baseUrl = 'http://localhost:5000';
+const baseUrl = 'http://40.85.221.22:5000';
 const searchUrl = baseUrl + '/search/song';
 const addUrl = baseUrl + '/playlists/song';
 
