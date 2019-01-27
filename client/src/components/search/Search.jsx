@@ -50,11 +50,17 @@ class SearchComponent extends Component {
         let query = this.state.text;
 
         if (!query) {
+            console.error('Search must not be empty');
             return;
         }
 
         let results = await fetch(searchUrl + '?' +
             queryString.stringify({q: query}));
+
+        if (results.status !== 200) {
+            console.error('Search failed, is a host connected?');
+            return;
+        }
 
         results = await results.json();
 
