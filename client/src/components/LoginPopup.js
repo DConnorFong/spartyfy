@@ -33,7 +33,7 @@ class LoginPopup extends Component {
                   <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Login to Spotify</Modal.Title>
                   </Modal.Header>
-                  <Button bsStyle="success" bsSize="large" href="http://40.85.221.22:5000/sessions/login">Sign in</Button>
+                  <Button bsStyle="success" bsSize="large" href="http://localhost:5000/sessions/login">Sign in</Button>
                 </Modal>
               </div>
         );
