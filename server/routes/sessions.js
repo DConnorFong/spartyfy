@@ -27,7 +27,7 @@ router.get('/login', function(req, res) {
 });
 
 router.get('/token', async function(req, res, next) {
-  let code = req.query.code ||qurey null;
+  let code = req.query.code || null;
   let state = req.query.state || null;
   let storedState = req.cookies ? req.cookies[stateKey] : null;
 
