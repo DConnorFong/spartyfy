@@ -8,6 +8,8 @@ const store = require('../store');
 const playUrl = 'https://api.spotify.com/v1/me/player/play';
 const featureUrl = 'https://api.spotify.com/v1/audio-features';
 
+let timeout;
+
 router.post('/song', async function(req, res) {
   let tokenInfo = await store.get('tokenInfo');
 
@@ -56,6 +58,24 @@ router.get('/', async function(req, res) {
   res.status(200).send(JSON.stringify(playlist));
 });
 
+router.post('/skip', async function(req, res) {
+  let playlist = await store.get('playlist');
+  if (playlist.length <= 1) {
+    res.status(400).send('Not enough songs to skip');
+    return;
+  }
+  store.set('playlist', playlist.slice(1));
+
+  clearTimeout(timeout);
+
+  try {
+    await playSong();
+    res.status(200).send('Song skipped');
+  } catch (err) {
+    res.status(500).send('Failed to skip song');
+  }
+});
+
 async function getAudioFeatures(id, accessToken) {
   let options = {
     method: 'GET',
@@ -96,13 +116,14 @@ async function playSong() {
 
   try {
     let response = await request(options);
-    setTimeout(async function() {
+    timeout = setTimeout(async function() {
       console.log('Playing next song');
       playlist = await store.get('playlist');
       playlist = playlist.splice(1);
       await store.set('playlist', playlist);
       await playSong();
     }, song.duration + 1000);
+
     return response;
   } catch (err) {
     console.log(err);
