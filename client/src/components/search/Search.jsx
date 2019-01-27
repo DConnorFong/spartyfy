@@ -3,43 +3,22 @@ import SearchSong from './SearchSong.jsx';
 import Header from '../../components/Header';
 import { MDBCol } from "mdbreact";
 import './Search.scss';
-import { Page, SearchInput, Toolbar, List} from 'react-onsenui';
+import { Page, SearchInput, Toolbar, List, Button} from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
+import queryString from 'query-string';
+
+const searchUrl = 'http://localhost:5000/search/song';
 
 class SearchComponent extends Component {
     constructor() {
         super();
         this.state = { 
             isSearch: true,
-            songs: [
-                {
-                    songTitle: 'This is a Test',
-                    songArtist: 'Test Artist',
-                    songImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Dark_Horse_%28Nickelback_album_cover%29.jpg/220px-Dark_Horse_%28Nickelback_album_cover%29.jpg'
-                },
-                {
-                    songTitle: 'This is a Test',
-                    songArtist: 'Test Artist',
-                    songImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Dark_Horse_%28Nickelback_album_cover%29.jpg/220px-Dark_Horse_%28Nickelback_album_cover%29.jpg'
-                },
-                {
-                    songTitle: 'This is a Test',
-                    songArtist: 'Test Artist',
-                    songImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Dark_Horse_%28Nickelback_album_cover%29.jpg/220px-Dark_Horse_%28Nickelback_album_cover%29.jpg'
-                },
-                {
-                    songTitle: 'This is a Test',
-                    songArtist: 'Test Artist',
-                    songImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Dark_Horse_%28Nickelback_album_cover%29.jpg/220px-Dark_Horse_%28Nickelback_album_cover%29.jpg'
-                },
-                {
-                    songTitle: 'This is a Test',
-                    songArtist: 'Test Artist',
-                    songImage: 'https://i.scdn.co/image/366f54da73f053d324aad6ca819a103ddb0e64bc'
-                }
-            ]
-        }
+            songs: []
+        };
+
+        this.searchSong = this.searchSong.bind(this);
     }
 
     gotoComponent(component, key) {
@@ -48,12 +27,16 @@ class SearchComponent extends Component {
     render() { 
         return (
             <div>
-                <SearchInput
-                style={{width: "100%"}}
-                value={this.state.text}
-                onChange={(event) => { this.setState({text: event.target.value, isSearch: false})} }
-                modifier='material'
-                placeholder='Search' />
+                <span>
+                    <SearchInput
+                    style={{width: "100%"}}
+                    value={this.state.text}
+                    onChange={(event) => { this.setState({text: event.target.value, isSearch: false})} }
+                    modifier='material'
+                    placeholder='Search' />
+                    <Button
+                    onClick={this.searchSong}>Search</Button>
+                </span>
                 <List
                     dataSource={this.state.songs}
                     renderRow={(row, idx) => <SearchSong id={idx} songTitle={row.songTitle} songArtist={row.songArtist} songImage={row.songImage}/>}
@@ -62,6 +45,53 @@ class SearchComponent extends Component {
         );
     }
     /* TODO: add an on-init fetch for Spotify top songs */
+
+    async searchSong() {
+        let query = this.state.text;
+
+        if (!query) {
+            return;
+        }
+
+        let results = await fetch(searchUrl + '?' +
+            queryString.stringify({q: query}));
+
+        results = await results.json();
+
+        console.log(results);
+
+        this.setState({rawSongs: results});
+        this.setState({songs: []});
+        this.setState({songs: this.convertToSongs(results)})
+    }
+
+    convertToSongs(results) {
+        let items = results.tracks.items;
+
+        console.log('items:\n');
+        console.log(JSON.stringify(items));
+        let songs = items.map(function (item) {
+            console.log(JSON.stringify(item));
+            debugger;
+            let song = {};
+
+            song.songTitle = item.name;
+
+            song.songArtist = '';
+            item.artists.forEach(function(artist) {
+                song.songArtist += artist.name;
+                song.songArtist += ', ';
+            });
+
+            // assuming the last image is smallest
+            let lastId = item.album.images.length - 1;
+            song.songImage = item.album.images[lastId].url;
+
+            return song;
+        });
+
+        return songs;
+    }
 }
 
 class Search extends Component {
