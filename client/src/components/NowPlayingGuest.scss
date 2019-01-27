@@ -1,0 +1,23 @@
+#player-guest {
+    background-color: rgba(25,20,20,0.9);
+    padding: 0px;
+
+    p {
+        font-size: 15px;
+    }
+
+    .player-guest-nowplaying {
+        font-family: 'Permanent Marker', cursive;
+        color: #f2f25c;
+    }
+
+    .player-guest-song {
+        color: #1db954;
+    }
+}
+
+#album-small {
+    width: 75px;
+    height: 75px;
+}
+
