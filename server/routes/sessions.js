@@ -50,6 +50,7 @@ router.get('/token', async function(req, res, next) {
       let tokenResponse = await request(options);
       let tokenInfo = JSON.parse(tokenResponse);
       req.session.tokenInfo = tokenInfo;
+      console.log('token:\n' + tokenInfo.access_token);
 
       res.redirect('http://localhost:3000/host?' +
         querystring.stringify({visible: false}));
