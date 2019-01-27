@@ -14,26 +14,30 @@ class NowPlaying  extends Component {
      };
     render() { 
         return (
-            <MDBRow>
-                <MDBCol className="d-none d-lg-block">
-                    <MDBCard id="player" style={{ width: "flex" }}>
+            <div className="row justify-content-center">
+                <div className="col d-none d-lg-block">
+                    <MDBCard id="player" style={{ width: "23" }}>
                         <h2>Now Playing</h2>
-                        <hr/>
+                        <div className="row justify-content-center">
+                        <marquee behavior="scroll" direction="left" className="col-8">Here is some scrolling text... right to left!</marquee>
+                        </div>
                         <div class="text-center">
-                            <img src="https://lastfm-img2.akamaized.net/i/u/ar0/26e00f0e05b0203e48e92e791c867425.jpg" id="albumbig" className="img-fluid img-thumbnail" />
+                            <img src="http://www.flat-e.com/flate5/wp-content/uploads/cover-960x857.jpg" id="albumbig" className="img-fluid" />
                         </div>
                         <MDBCardBody>   
-                        <div className="row">
+
+                        <div className="row justify-content-center">
                             <div className="col-3">
                                 <div className="text-center">
                                     <button type="button" class="btn btn-block btn-lg btn-danger center-block">
                                         <i className="fas fa-thumbs-down"></i>
-                                    </button>                    
+                                    </button>
+
                                 </div>       
                             </div>
-                            <div className ="col-6">
-                                <p id="songplaying" className="text-uppercase text-center">Mo Bamba</p>
-                                <p className="text-center">Sheck Wes</p>
+                            <div className="col-6">
+                            <p id="songplaying" className="text-uppercase text-center">Mo Bamba</p>
+                            <p className="text-center">Sheck Wes</p>
                             </div>
                             <div className="col-3">
                                   <div className="text-center">
@@ -47,7 +51,7 @@ class NowPlaying  extends Component {
 
                         </MDBCard>
                        
-                    </MDBCol>
+                    </div>
 
                 <MDBCol className="d-lg-none">
                     <MDBCard id="player" style={{height: "20", width: ""}}>
@@ -82,7 +86,7 @@ class NowPlaying  extends Component {
 
 
 
-            </MDBRow>  
+            </div>  
             );
     }
 }
