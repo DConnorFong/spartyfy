@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer, MDBRow, MDBCol, MDBBtnGroup, MDBIcon } from 'mdbreact';
 import ('./NowPlaying.scss');
 
-const playlistUrl = 'http://localhost:5000/playlists';
+const baseUrl = 'http://localhost:5000';
+const playlistUrl = baseUrl + '/playlists';
+const skipUrl = playlistUrl + '/skip';
 
 class NowPlaying  extends Component {
     constructor() {
@@ -43,6 +45,20 @@ class NowPlaying  extends Component {
           .then(() => setTimeout(this.pollPlaylist, 3000));
     }
 
+    skipSong() {
+        fetch(skipUrl, {
+            method: 'post'
+        }).then(res => {
+            if (res.status === 200) {
+                console.log('Skip succeeded');
+            } else {
+                console.log('Skip failed');
+            }
+        }).catch((err) => {
+            console.error('An error occured while skipping: ' + err);
+        });
+    }
+
     render() {
         return (
             <div className="row justify-content-center">
@@ -67,7 +83,8 @@ class NowPlaying  extends Component {
                                 </div>       
                             </div>
                             <div className="col-4">
-                                    <button type="button" class="btn btn-block btn-lg btn-dark center-block">
+                                    <button type="button" class="btn btn-block btn-lg btn-dark center-block"
+                                        onClick={this.skipSong}>
                                         <i class="fas fa-angle-double-right"></i>
                                     </button>
                             </div>
